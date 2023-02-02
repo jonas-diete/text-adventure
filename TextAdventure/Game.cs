@@ -58,7 +58,7 @@ namespace TextAdventure
 
         private void LoadIntro()
         {
-            Console.WriteLine("Hello and welcome to The Return - a classical text adventure");
+            Console.WriteLine("Hello and welcome to Into The Light - a text adventure by Jonas Diete");
             Console.WriteLine("---------");
             Console.WriteLine("");
             Console.WriteLine(currentLevel.description);
