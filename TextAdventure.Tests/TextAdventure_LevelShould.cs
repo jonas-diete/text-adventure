@@ -8,15 +8,13 @@ namespace TextAdventure.Tests
     {
         private Level level;
         private UserAction action1;
-        private UserAction action2;
         private UserAction[] actions;
 
         [SetUp]
         public void Setup()
         {
-            action1 = new UserAction("open eyes", "You open your eyes. Everything is bright, bright light! An incredible sensation overcomes you - you feel more alive than ever before!", "none");
-            action2 = new UserAction("shout hello", "You open your mouth and try to shout but you can just emit a strange scream.", "none");
-            actions = new UserAction[] { action1, action2 };
+            action1 = new UserAction("open eyes", "Some description", "none");
+            actions = new UserAction[] { action1 };
             level = new Level("intro", "You emerge into bright light.", actions);
         }
 
