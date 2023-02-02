@@ -1,8 +1,8 @@
 ﻿namespace TextAdventure
 {
-    internal class Level
+    public class Level
     {
-        private string name;
+        public string name;
         public string description;
         public UserAction[] actions;
 

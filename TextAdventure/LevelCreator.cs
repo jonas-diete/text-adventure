@@ -1,6 +1,6 @@
 ﻿namespace TextAdventure
 {
-    internal class LevelCreator
+    public class LevelCreator
     {
         public Level[] CreateLevels()
         {

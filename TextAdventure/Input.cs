@@ -1,6 +1,6 @@
 namespace TextAdventure
 {
-    class Input
+    public class Input
     {
         public string GetInput()
         {

@@ -1,6 +1,6 @@
 ﻿namespace TextAdventure
 {
-    internal class UserAction
+    public class UserAction
     {    
     public string description;
     public string result;

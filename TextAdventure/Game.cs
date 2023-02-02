@@ -1,6 +1,6 @@
 namespace TextAdventure
 {
-    internal class Game
+    public class Game
     {
         Level currentLevel;
         Input input;
