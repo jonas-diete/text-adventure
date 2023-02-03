@@ -3,13 +3,15 @@
     public class UserAction
     {    
     public string description;
-    public string result;
     public string resultDescription;
-        public UserAction(string actionDescription, string actionResultDescription, string actionResult)
+    public string result;
+    public string resultAttribute;
+        public UserAction(string actionDescription, string actionResultDescription, string actionResult, string actionResultAttribute = "none")
         {
             description = actionDescription;
-            result = actionResult;
             resultDescription = actionResultDescription;
+            result = actionResult;
+            resultAttribute = actionResultAttribute;
         }
     }
 }

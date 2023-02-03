@@ -33,7 +33,7 @@ namespace TextAdventure
                 if (playerInput == possibleAction.description)
                 {
                     Console.WriteLine(possibleAction.resultDescription);
-                    LoadResult(possibleAction.result);
+                    LoadResult(possibleAction.result, possibleAction.resultAttribute);
                     return;
                 }
             }
@@ -52,28 +52,19 @@ namespace TextAdventure
             }
         }
 
-        private void LoadResult(string result)
+        private void LoadResult(string result, string attribute)
         {
-            string command = result.Split(' ')[0];
-            if (command == "none") 
+            if (result == "get")
             {
-                return;
+                // todo: add phone to inventory instead of the writeline
+                Console.WriteLine("Received" + attribute);
             }
-            else 
+            else if (result == "load")
             {
-                string attribute = result.Split(' ')[1];
-                if (command == "get")
-                {
-                    // todo: add phone to inventory instead of the writeline
-                    Console.WriteLine("Received item");
-                }
-                else if (command == "load")
-                {
-                    LoadLevel(attribute);
-                }
+                LoadLevel(attribute);
             }
-            
         }
+            
 
         private void LoadIntro()
         {
