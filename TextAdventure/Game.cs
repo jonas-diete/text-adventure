@@ -3,12 +3,13 @@ namespace TextAdventure
     public class Game
     {
         Level currentLevel;
+        Level[] levels;
         Input input;
 
         public Game()
         {
             LevelCreator levelCreator = new LevelCreator();
-            Level[] levels = levelCreator.CreateLevels();
+            levels = levelCreator.CreateLevels();
             currentLevel = levels[0];
             input = new Input();
         }
@@ -16,44 +17,62 @@ namespace TextAdventure
         public void StartGame()
         {
             LoadIntro();
-
-            for (int i = 0; i < 5; i++)  // todo: use a while loop here
+            Console.WriteLine(currentLevel.description);
+            while (currentLevel.name != "end")
             {
                 string playerInput = input.GetInput();
-                string result = EvaluateInput(playerInput, currentLevel.actions);
-                Console.WriteLine(result);
+                EvaluateInput(playerInput, currentLevel.actions);
             }
-
         }
 
-        private string EvaluateInput(string playerInput, UserAction[] possibleActions)
+        private void EvaluateInput(string playerInput, UserAction[] possibleActions)
         {
             foreach (UserAction possibleAction in possibleActions)
             {
-                // todo: need to translate the playerInput here, so it is standardised into
-                // take, look, go, open, close, turn on, turn off
+                // todo: need to translate the playerInput here, so it is standardised into take, look, go, open, close, turn on, turn off             
                 if (playerInput == possibleAction.description)
                 {
+                    Console.WriteLine(possibleAction.resultDescription);
                     LoadResult(possibleAction.result);
-                    return possibleAction.resultDescription;
+                    return;
                 }
             }
-            return "I don't understand what to do.";
+            Console.WriteLine("I don't understand what to do.");
+        }
+
+        private void LoadLevel(string levelName)
+        {
+            foreach (Level level in levels)
+            {
+                if (level.name == levelName)
+                {
+                    currentLevel = level;
+                    Console.WriteLine(currentLevel.description);
+                }
+            }
         }
 
         private void LoadResult(string result)
         {
-            string firstWord = result.Split(' ')[0];
-            if (firstWord == "get")
+            string command = result.Split(' ')[0];
+            if (command == "none") 
             {
-                // todo: add phone to inventory instead of the writeline
-                Console.WriteLine("You have got a phone!");
+                return;
             }
-            else if (firstWord == "load")
+            else 
             {
-                // todo: load next level
-                Console.WriteLine("You are in the next level!");
+                string attribute = result.Split(' ')[1];
+                if (command == "get")
+                {
+                    // todo: add phone to inventory instead of the writeline
+                    Console.WriteLine("Received item");
+                }
+                else if (command == "load")
+                {
+                    LoadLevel(attribute);
+                }
             }
+            
         }
 
         private void LoadIntro()
@@ -61,7 +80,6 @@ namespace TextAdventure
             Console.WriteLine("Hello and welcome to Into The Light - a text adventure by Jonas Diete");
             Console.WriteLine("---------");
             Console.WriteLine("");
-            Console.WriteLine(currentLevel.description);
         }
     }
 }
