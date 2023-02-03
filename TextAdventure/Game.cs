@@ -29,8 +29,10 @@ namespace TextAdventure
         {
             foreach (UserAction possibleAction in possibleActions)
             {
-                // todo: need to translate the playerInput here, so it is standardised into take, look, go, open, close, turn on, turn off             
-                if (playerInput == possibleAction.description)
+                string[] playerInputArray = playerInput.Split(' ');
+                playerInputArray[0] = TranslateInput(playerInputArray[0]);
+                string updatedPlayerInput = String.Join(" ", playerInputArray);           
+                if (updatedPlayerInput == possibleAction.description)
                 {
                     Console.WriteLine(possibleAction.resultDescription);
                     LoadResult(possibleAction.result, possibleAction.resultAttribute);
