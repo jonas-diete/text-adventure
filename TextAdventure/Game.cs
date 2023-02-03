@@ -40,6 +40,21 @@ namespace TextAdventure
             Console.WriteLine("I don't understand what to do.");
         }
 
+        public string TranslateInput(string input)
+        {
+            if (input == "shout" || input == "call" || input == "scream")
+            {
+                return "say";
+            }
+
+            if (input == "walk" || input == "run" || input == "sprint")
+            {
+                return "go";
+            }
+
+            return input;
+        }
+
         private void LoadLevel(string levelName)
         {
             foreach (Level level in levels)
