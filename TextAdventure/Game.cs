@@ -25,9 +25,9 @@ namespace TextAdventure
             }
         }
 
-        private void EvaluateInput(string playerInput, UserAction[] possibleActions)
+        private void EvaluateInput(string playerInput, List<UserAction> possibleActions)
         {
-            foreach (UserAction possibleAction in possibleActions)
+            foreach (var possibleAction in possibleActions)
             {
                 string[] playerInputArray = playerInput.Split(' ');
                 playerInputArray[0] = TranslateInput(playerInputArray[0]);

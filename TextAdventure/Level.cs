@@ -4,9 +4,9 @@
     {
         public string name;
         public string description;
-        public UserAction[] actions;
+        public List<UserAction> actions = new List<UserAction>();
 
-        public Level(string levelName, string levelDescription, UserAction[] levelActions)
+        public Level(string levelName, string levelDescription, List<UserAction> levelActions)
         {
             name = levelName;
             description = levelDescription;
