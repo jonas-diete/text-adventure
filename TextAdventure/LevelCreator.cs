@@ -6,7 +6,7 @@ namespace TextAdventure
 {
     public class LevelCreator
     {
-        public Level[] CreateLevels()
+        public List<Level> CreateLevels()
         {
             // Level 1
             string description = "After a long, hard journey you emerge from the dark place that has been your home for your entire life. Your body aches from the effort and you wish you could have stayed longer in your cosy, warm home. But you know there is no way back. Terrified of the new life that awaits you, you decided to close your eyes for the last part of the journey and haven't yet dared to open them again. Now there is a calm settling in your body. It's over. You have arrived.";
@@ -33,7 +33,10 @@ namespace TextAdventure
             actions = new List<UserAction>();
             Level level3 = new Level("end", description, actions);
 
-            Level[] levels = { level1, level2, level3 };
+            List<Level> levels = new List<Level>();
+            levels.Add(level1);
+            levels.Add(level2);
+            levels.Add(level3);
             return levels;
         }
 
@@ -64,6 +67,7 @@ namespace TextAdventure
                 string actionResult;
                 string actionResultAttribute;
 
+                // iterating through the actions and creating them as objects
                 for (int i = 0; i < 10; i++)
                 {
                     if (csvReader.GetField("action" + i + "Description") != "")
@@ -74,10 +78,12 @@ namespace TextAdventure
                         actionResultAttribute = csvReader.GetField("action" + i + "ResultAttribute")!;
                         Console.WriteLine(actionDescription + actionResultDescription + actionResult + actionResultAttribute);
                         action = new UserAction(actionDescription, actionResultDescription, actionResult, actionResultAttribute); 
-                        // TODO: Make actions a list and make level accept that list as argument not an array!
+                        actions.Add(action);
                     }
 
                 }
+
+
                 // for (int i = 0; csvReader.TryGetField<string>(i, out value); i++)
                 // {
                 //     if (value != "")

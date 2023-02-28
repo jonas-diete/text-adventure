@@ -3,7 +3,7 @@ namespace TextAdventure
     public class Game
     {
         Level currentLevel;
-        Level[] levels;
+        List<Level> levels = new List<Level>();
         Input input;
 
         public Game()
