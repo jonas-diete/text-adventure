@@ -31,8 +31,9 @@ namespace TextAdventure
             {
                 string[] playerInputArray = playerInput.Split(' ');
                 playerInputArray[0] = TranslateInput(playerInputArray[0]);
-                string updatedPlayerInput = String.Join(" ", playerInputArray);           
-                if (updatedPlayerInput == possibleAction.description)
+                string updatedPlayerInput = String.Join(" ", playerInputArray);
+                string[] actionDescriptions = possibleAction.descriptions.Split(";");           
+                if (Array.Exists(actionDescriptions, description => description == updatedPlayerInput))
                 {
                     Console.WriteLine(possibleAction.resultDescription);
                     LoadResult(possibleAction.result, possibleAction.resultAttribute);

@@ -42,11 +42,6 @@ namespace TextAdventure
 
         public List<Level> LoadLevelsFromCsv()
         {
-            // var csvConfig = new CsvConfiguration(CultureInfo.CurrentCulture)
-            // {
-            //     HasHeaderRecord = true
-            // };
-
             using var streamReader = File.OpenText("levels.csv");
             using var csvReader = new CsvReader(streamReader, CultureInfo.CurrentCulture);
             csvReader.Read();
@@ -63,7 +58,7 @@ namespace TextAdventure
                 levelName = csvReader.GetField("levelName")!;
                 levelDescription = csvReader.GetField("description")!;
                 UserAction action;
-                string actionDescription;
+                string actionDescriptions;
                 string actionResultDescription;
                 string actionResult;
                 string actionResultAttribute;
@@ -73,11 +68,11 @@ namespace TextAdventure
                 {
                     if (csvReader.GetField("action" + i + "Description") != "")
                     {
-                        actionDescription = csvReader.GetField("action" + i + "Description")!;
+                        actionDescriptions = csvReader.GetField("action" + i + "Description")!;
                         actionResultDescription = csvReader.GetField("action" + i + "ResultDescription")!;
                         actionResult = csvReader.GetField("action" + i + "Result")!;
                         actionResultAttribute = csvReader.GetField("action" + i + "ResultAttribute")!;
-                        action = new UserAction(actionDescription, actionResultDescription, actionResult, actionResultAttribute); 
+                        action = new UserAction(actionDescriptions, actionResultDescription, actionResult, actionResultAttribute); 
                         actions.Add(action);
                     }
                 }
