@@ -8,13 +8,15 @@ namespace TextAdventure.Tests
     {
         private Level level;
         private UserAction action1;
-        private UserAction[] actions;
+        private List<UserAction> actions = new List<UserAction>();
+
+        
 
         [SetUp]
         public void Setup()
         {
             action1 = new UserAction("open eyes", "Some description", "none");
-            actions = new UserAction[] { action1 };
+            actions.Add(action1);
             level = new Level("intro", "You emerge into bright light.", actions);
         }
 
@@ -23,7 +25,7 @@ namespace TextAdventure.Tests
         {
             Assert.That(level.name, Is.EqualTo("intro"));
             Assert.That(level.description, Is.EqualTo("You emerge into bright light."));
-            Assert.That(level.actions[0].description, Is.EqualTo("open eyes"));
+            Assert.That(level.actions[0].descriptions, Is.EqualTo("open eyes"));
         }
     }
 }
