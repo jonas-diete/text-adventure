@@ -40,7 +40,7 @@ namespace TextAdventure
             return levels;
         }
 
-        public Level[] LoadLevelsFromCsv()
+        public List<Level> LoadLevelsFromCsv()
         {
             // var csvConfig = new CsvConfiguration(CultureInfo.CurrentCulture)
             // {
@@ -52,10 +52,11 @@ namespace TextAdventure
             csvReader.Read();
             csvReader.ReadHeader();
 
-            List<string> levelAttributes = new List<string>();
             string levelName;
             string levelDescription;
+            Level level;
             List<UserAction> actions = new List<UserAction>();
+            List<Level> levels = new List<Level>();
 
             while (csvReader.Read()) // Reads each level
             {
@@ -67,7 +68,7 @@ namespace TextAdventure
                 string actionResult;
                 string actionResultAttribute;
 
-                // iterating through the actions and creating them as objects
+                // reads the actions and creates them as objects
                 for (int i = 0; i < 10; i++)
                 {
                     if (csvReader.GetField("action" + i + "Description") != "")
@@ -76,36 +77,15 @@ namespace TextAdventure
                         actionResultDescription = csvReader.GetField("action" + i + "ResultDescription")!;
                         actionResult = csvReader.GetField("action" + i + "Result")!;
                         actionResultAttribute = csvReader.GetField("action" + i + "ResultAttribute")!;
-                        Console.WriteLine(actionDescription + actionResultDescription + actionResult + actionResultAttribute);
                         action = new UserAction(actionDescription, actionResultDescription, actionResult, actionResultAttribute); 
                         actions.Add(action);
                     }
-
                 }
 
-
-                // for (int i = 0; csvReader.TryGetField<string>(i, out value); i++)
-                // {
-                //     if (value != "")
-                //     {
-                //         levelAttributes.Add(value);
-                //     }
-                // }
+                level = new Level(levelName, levelDescription, actions);
+                levels.Add(level);
             }
 
-            // foreach (string attribute in levelAttributes)
-            // {
-            //     Console.WriteLine(attribute);
-            // }
-
-            string description = "Level1";
-            actions = new List<UserAction>();
-            Level level1 = new Level("level1", description, actions);
-
-            description = "End";
-            actions = new List<UserAction>();
-            Level level2 = new Level("end", description, actions);
-            Level[] levels = { level1, level2 };
             return levels;
         }
     }

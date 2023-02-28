@@ -9,7 +9,7 @@ namespace TextAdventure
         public Game()
         {
             LevelCreator levelCreator = new LevelCreator();
-            levels = levelCreator.CreateLevels();
+            levels = levelCreator.LoadLevelsFromCsv();
             currentLevel = levels[0];
             input = new Input();
         }
