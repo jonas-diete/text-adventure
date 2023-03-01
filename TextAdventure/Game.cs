@@ -29,15 +29,24 @@ namespace TextAdventure
         {
             foreach (var possibleAction in possibleActions)
             {
-                string[] playerInputArray = playerInput.Split(' ');
+                string[] playerInputArray = playerInput.Split(" ");
                 playerInputArray[0] = TranslateInput(playerInputArray[0]);
                 string updatedPlayerInput = String.Join(" ", playerInputArray);
                 string[] actionDescriptions = possibleAction.descriptions.Split(";");           
                 if (Array.Exists(actionDescriptions, description => description == updatedPlayerInput))
                 {
-                    Console.WriteLine(possibleAction.resultDescription);
-                    LoadResult(possibleAction.result, possibleAction.resultAttribute);
-                    return;
+                    if (possibleAction.requirement == "" || currentLevel.actionsCompleted.Exists(action => action == possibleAction.requirement))
+                    {
+                        Console.WriteLine(possibleAction.resultDescription);
+                        LoadResult(possibleAction.result, possibleAction.resultAttribute);
+                        currentLevel.actionsCompleted.Add(actionDescriptions[0]);
+                        return; 
+                    } 
+                    else
+                    {
+                        Console.WriteLine(possibleAction.reqNotFulfilled);
+                    }
+
                 }
             }
             Console.WriteLine("I don't understand what to do.");

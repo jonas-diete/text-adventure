@@ -50,7 +50,6 @@ namespace TextAdventure
             string levelName;
             string levelDescription;
             Level level;
-            List<UserAction> actions = new List<UserAction>();
             List<Level> levels = new List<Level>();
 
             while (csvReader.Read()) // Reads each level
@@ -62,6 +61,9 @@ namespace TextAdventure
                 string actionResultDescription;
                 string actionResult;
                 string actionResultAttribute;
+                string actionRequirement;
+                string actionReqNotFulfilled;
+                List<UserAction> actions = new List<UserAction>();
 
                 // reads the actions and creates them as objects
                 for (int i = 0; i < 10; i++)
@@ -72,7 +74,9 @@ namespace TextAdventure
                         actionResultDescription = csvReader.GetField("action" + i + "ResultDescription")!;
                         actionResult = csvReader.GetField("action" + i + "Result")!;
                         actionResultAttribute = csvReader.GetField("action" + i + "ResultAttribute")!;
-                        action = new UserAction(actionDescriptions, actionResultDescription, actionResult, actionResultAttribute); 
+                        actionRequirement = csvReader.GetField("action" + i + "Requirement")!;
+                        actionReqNotFulfilled = csvReader.GetField("action" + i + "ReqNotFulfilled")!;
+                        action = new UserAction(actionDescriptions, actionResultDescription, actionResult, actionResultAttribute, actionRequirement, actionReqNotFulfilled); 
                         actions.Add(action);
                     }
                 }
