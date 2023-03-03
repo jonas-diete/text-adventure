@@ -28,11 +28,8 @@ namespace TextAdventure
         {
             foreach (var possibleAction in possibleActions)
             {
-                string[] playerInputArray = playerInput.Split(" ");
-                playerInputArray[0] = TranslateInput(playerInputArray[0]);
-                string updatedPlayerInput = String.Join(" ", playerInputArray);
-                string[] actionDescriptions = possibleAction.descriptions.Split(";");           
-                if (Array.Exists(actionDescriptions, description => description == updatedPlayerInput))
+                string[] actionDescriptions = possibleAction.descriptions.Split(";");
+                if (Array.Exists(actionDescriptions, description => description == TranslateInput(playerInput)))
                 {
                     if (possibleAction.requirement == "" || currentLevel.actionsCompleted.Exists(action => action == possibleAction.requirement))
                     {
@@ -46,13 +43,19 @@ namespace TextAdventure
                         Console.WriteLine(possibleAction.reqNotFulfilled);
                         return;
                     }
-
                 }
             }
             Console.WriteLine("I don't understand what to do.");
         }
 
         public string TranslateInput(string input)
+        {
+            string[] playerInputArray = input.Split(" ");
+            playerInputArray[0] = Translate(playerInputArray[0]);
+            return String.Join(" ", playerInputArray);
+        }
+
+        private string Translate(string input)
         {
             if (input == "shout" || input == "call" || input == "scream")
             {
