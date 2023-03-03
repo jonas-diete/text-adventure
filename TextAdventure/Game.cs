@@ -78,7 +78,7 @@ namespace TextAdventure
                 {
                     currentLevel = level;
                     Console.WriteLine(currentLevel.description);
-                    Console.WriteLine("What would you like to do?");
+                    if (level.name != "end") { Console.WriteLine("What would you like to do?"); }
                 }
             }
         }
