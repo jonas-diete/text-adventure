@@ -4,23 +4,22 @@ namespace TextAdventure
     {
         Level currentLevel;
         List<Level> levels = new List<Level>();
-        Input input;
 
         public Game()
         {
             LevelCreator levelCreator = new LevelCreator();
             levels = levelCreator.LoadLevelsFromCsv();
             currentLevel = levels[0];
-            input = new Input();
         }
 
         public void StartGame()
         {
             LoadIntro();
             Console.WriteLine(currentLevel.description);
+            Console.WriteLine("What do you want to do?");
             while (currentLevel.name != "end")
             {
-                string playerInput = input.GetInput();
+                string playerInput = Console.ReadLine()!.ToLower().Trim();
                 EvaluateInput(playerInput, currentLevel.actions);
             }
         }
@@ -76,6 +75,7 @@ namespace TextAdventure
                 {
                     currentLevel = level;
                     Console.WriteLine(currentLevel.description);
+                    Console.WriteLine("What would you like to do?");
                 }
             }
         }
@@ -96,6 +96,7 @@ namespace TextAdventure
 
         private void LoadIntro()
         {
+            Console.WriteLine("---------");
             Console.WriteLine("Hello and welcome to Into The Light - a text adventure by Jonas Diete");
             Console.WriteLine("---------");
             Console.WriteLine("");
