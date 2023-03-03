@@ -57,12 +57,6 @@ namespace TextAdventure
                 levelName = csvReader.GetField("levelName")!;
                 levelDescription = csvReader.GetField("description")!;
                 UserAction action;
-                string actionDescriptions;
-                string actionResultDescription;
-                string actionResult;
-                string actionResultAttribute;
-                string actionRequirement;
-                string actionReqNotFulfilled;
                 List<UserAction> actions = new List<UserAction>();
 
                 // reads the actions and creates them as objects
@@ -70,13 +64,7 @@ namespace TextAdventure
                 {
                     if (csvReader.GetField("action" + i + "Description") != "")
                     {
-                        actionDescriptions = csvReader.GetField("action" + i + "Description")!;
-                        actionResultDescription = csvReader.GetField("action" + i + "ResultDescription")!;
-                        actionResult = csvReader.GetField("action" + i + "Result")!;
-                        actionResultAttribute = csvReader.GetField("action" + i + "ResultAttribute")!;
-                        actionRequirement = csvReader.GetField("action" + i + "Requirement")!;
-                        actionReqNotFulfilled = csvReader.GetField("action" + i + "ReqNotFulfilled")!;
-                        action = new UserAction(actionDescriptions, actionResultDescription, actionResult, actionResultAttribute, actionRequirement, actionReqNotFulfilled); 
+                        action = new UserAction(csvReader.GetField("action" + i + "Description")!, csvReader.GetField("action" + i + "ResultDescription")!, csvReader.GetField("action" + i + "Result")!, csvReader.GetField("action" + i + "ResultAttribute")!, csvReader.GetField("action" + i + "Requirement")!, csvReader.GetField("action" + i + "ReqNotFulfilled")!); 
                         actions.Add(action);
                     }
                 }

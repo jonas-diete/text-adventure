@@ -45,6 +45,7 @@ namespace TextAdventure
                     else
                     {
                         Console.WriteLine(possibleAction.reqNotFulfilled);
+                        return;
                     }
 
                 }
