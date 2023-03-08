@@ -33,10 +33,8 @@ namespace TextAdventure
                 {
                     if (possibleAction.requirement == "" || currentLevel.actionsCompleted.Exists(action => action == possibleAction.requirement))
                     {
-                        //Console.WriteLine(possibleAction.resultDescription);
-                        //LoadResult(possibleAction.result, possibleAction.resultAttribute);
                         currentLevel.actionsCompleted.Add(actionDescriptions[0]);
-                        return possibleAction.resultDescription + LoadResult(possibleAction.result, possibleAction.resultAttribute); 
+                        return possibleAction.resultDescription + GetResult(possibleAction.result, possibleAction.resultAttribute); 
                     } 
                     else
                     {
@@ -69,7 +67,7 @@ namespace TextAdventure
             return input;
         }
 
-        private string LoadLevel(string levelName)
+        private string GetLevel(string levelName)
         {
             foreach (Level level in levels)
             {
@@ -87,7 +85,7 @@ namespace TextAdventure
             return "Error: Level doesn't exist.";
         }
 
-        private string LoadResult(string result, string attribute)
+        private string GetResult(string result, string attribute)
         {
             if (result == "get")
             {
@@ -96,7 +94,7 @@ namespace TextAdventure
             }
             else if (result == "load")
             {
-                return LoadLevel(attribute);
+                return GetLevel(attribute);
             }
             else
             {
