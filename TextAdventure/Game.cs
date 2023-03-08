@@ -20,11 +20,11 @@ namespace TextAdventure
             while (currentLevel.name != "end")
             {
                 string playerInput = Console.ReadLine()!.ToLower().Trim();
-                EvaluateInput(playerInput, currentLevel.actions);
+                Console.WriteLine(EvaluateInput(playerInput, currentLevel.actions));
             }
         }
 
-        private void EvaluateInput(string playerInput, List<UserAction> possibleActions)
+        private string EvaluateInput(string playerInput, List<UserAction> possibleActions)
         {
             foreach (var possibleAction in possibleActions)
             {
@@ -33,19 +33,18 @@ namespace TextAdventure
                 {
                     if (possibleAction.requirement == "" || currentLevel.actionsCompleted.Exists(action => action == possibleAction.requirement))
                     {
-                        Console.WriteLine(possibleAction.resultDescription);
-                        LoadResult(possibleAction.result, possibleAction.resultAttribute);
+                        //Console.WriteLine(possibleAction.resultDescription);
+                        //LoadResult(possibleAction.result, possibleAction.resultAttribute);
                         currentLevel.actionsCompleted.Add(actionDescriptions[0]);
-                        return; 
+                        return possibleAction.resultDescription + LoadResult(possibleAction.result, possibleAction.resultAttribute); 
                     } 
                     else
                     {
-                        Console.WriteLine(possibleAction.reqNotFulfilled);
-                        return;
+                        return possibleAction.reqNotFulfilled;
                     }
                 }
             }
-            Console.WriteLine("I don't understand what to do.");
+            return "I don't understand what to do.";
         }
 
         public string TranslateInput(string input)
@@ -70,37 +69,39 @@ namespace TextAdventure
             return input;
         }
 
-        private void LoadLevel(string levelName)
+        private string LoadLevel(string levelName)
         {
             foreach (Level level in levels)
             {
                 if (level.name == levelName)
                 {
                     currentLevel = level;
-                    Console.WriteLine("");
-                    Console.WriteLine(currentLevel.description);
-                    if (level.name != "end") { Console.WriteLine("What would you like to do?"); }
+                    string result = "\n\n" + currentLevel.description;
+                    if (level.name != "end") 
+                        {
+                            result += "\nWhat do you want to do?"; 
+                        }
+                    return result;
                 }
             }
+            return "Error: Level doesn't exist.";
         }
 
-        private void LoadResult(string result, string attribute)
+        private string LoadResult(string result, string attribute)
         {
             if (result == "get")
             {
                 // todo: add phone to inventory instead of the writeline
-                Console.WriteLine("Received" + attribute);
+                return "Received" + attribute;
             }
             else if (result == "load")
             {
-                LoadLevel(attribute);
+                return LoadLevel(attribute);
             }
-        }
-            
-
-        private void LoadIntro()
-        {
-            Console.WriteLine("\n------------------------------------------------------------\nWelcome to Into The Light - a text adventure by Jonas Diete\n------------------------------------------------------------\n");
+            else
+            {
+                return "";
+            }
         }
     }
 }
