@@ -4,19 +4,19 @@ namespace TextAdventure
     {
         Level currentLevel;
         List<Level> levels = new List<Level>();
+        string intro;
 
         public Game()
         {
             LevelCreator levelCreator = new LevelCreator();
             levels = levelCreator.LoadLevelsFromCsv();
             currentLevel = levels[0];
+            intro = "\n------------------------------------------------------------\nWelcome to Into The Light - a text adventure by Jonas Diete\n------------------------------------------------------------\n\n";
         }
 
         public void StartGame()
         {
-            LoadIntro();
-            Console.WriteLine(currentLevel.description);
-            Console.WriteLine("What do you want to do?");
+            Console.WriteLine(intro + currentLevel.description + "\n\n" + "What do you want to do?");
             while (currentLevel.name != "end")
             {
                 string playerInput = Console.ReadLine()!.ToLower().Trim();
@@ -100,11 +100,7 @@ namespace TextAdventure
 
         private void LoadIntro()
         {
-            Console.WriteLine("");
-            Console.WriteLine("---------");
-            Console.WriteLine("Hello and welcome to Into The Light - a text adventure by Jonas Diete");
-            Console.WriteLine("---------");
-            Console.WriteLine("");
+            Console.WriteLine("\n------------------------------------------------------------\nWelcome to Into The Light - a text adventure by Jonas Diete\n------------------------------------------------------------\n");
         }
     }
 }
