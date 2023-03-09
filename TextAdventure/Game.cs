@@ -5,6 +5,7 @@ namespace TextAdventure
         Level currentLevel;
         List<Level> levels = new List<Level>();
         string intro;
+        List<string> inventory = new List<string>();
 
         public Game()
         {
@@ -89,17 +90,13 @@ namespace TextAdventure
         {
             if (result == "get")
             {
-                // todo: add phone to inventory instead of the writeline
-                return "Received" + attribute;
+                inventory.Add(attribute);
             }
             else if (result == "load")
             {
                 return GetLevel(attribute);
             }
-            else
-            {
-                return "";
-            }
+            return "";
         }
     }
 }
