@@ -23,6 +23,7 @@ namespace TextAdventure
                 string playerInput = Console.ReadLine()!.ToLower().Trim();
                 Console.WriteLine(EvaluateInput(playerInput, currentLevel.actions));
             }
+            Console.ReadLine();
         }
 
         private string EvaluateInput(string playerInput, List<UserAction> possibleActions)
