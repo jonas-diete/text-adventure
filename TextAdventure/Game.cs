@@ -11,8 +11,8 @@ namespace TextAdventure
         {
             LevelCreator levelCreator = new LevelCreator();
             levels = levelCreator.LoadLevelsFromCsv();
-            currentLevel = levels[0];
-            intro = "\n------------------------------------------------------------\nWelcome to Into The Light - a text adventure by Jonas Diete\n------------------------------------------------------------\n\n";
+            intro = "\n------------------------------------------------------------\n" + levels[0].description + "\n------------------------------------------------------------\n\n";
+            currentLevel = levels[1];
         }
 
         public void StartGame()
