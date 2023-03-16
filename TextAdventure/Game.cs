@@ -54,7 +54,7 @@ namespace TextAdventure
             return String.Join(" ", playerInputArray);
         }
 
-        private string Translate(string input)
+        public string Translate(string input)
         {
             if (input == "shout" || input == "call" || input == "scream")
             {
@@ -69,7 +69,7 @@ namespace TextAdventure
             return input;
         }
 
-        private string GetLevel(string levelName)
+        public string GetLevel(string levelName)
         {
             foreach (Level level in levels)
             {
@@ -87,7 +87,7 @@ namespace TextAdventure
             return "Error: Level doesn't exist.";
         }
 
-        private string GetResult(string result, string attribute)
+        public string GetResult(string result, string attribute)
         {
             if (result == "get")
             {
