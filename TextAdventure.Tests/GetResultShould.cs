@@ -15,9 +15,20 @@ namespace TextAdventure.Tests
         }
 
         [TestCase("get", "sword")]
-        public void GetResult_ShouldReturnEmptyString(string input1, string input2)
+        [TestCase("get", "ring")]
+        [TestCase("get", "rattle")]
+        public void GetResult_ShouldReturnEmptyString(string result, string attribute)
         {
-            Assert.That(game.GetResult(input1, input2), Is.EqualTo(""));
+            // Todo: need to test if items have been added to inventory here!
+            Assert.That(game.GetResult(result, attribute), Is.EqualTo(""));
+        }
+
+        [TestCase("load", "level2")]
+        [TestCase("load", "level3")]
+        [TestCase("load", "end")]
+        public void GetResult_ShouldReturnNextLevel(string result, string attribute)
+        {
+            Assert.That(game.GetResult(result, attribute), Is.EqualTo(game.GetLevel(attribute)));
         }
 
     }
