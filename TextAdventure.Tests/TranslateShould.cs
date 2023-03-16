@@ -19,7 +19,7 @@ namespace TextAdventure.Tests
         [TestCase("sprint")]
         public void Translate_ShouldReturnGo(string input)
         {
-            Assert.That(game.TranslateInput(input), Is.EqualTo("go"));
+            Assert.That(game.Translate(input), Is.EqualTo("go"));
         }
 
         [TestCase("shout")]
@@ -27,7 +27,7 @@ namespace TextAdventure.Tests
         [TestCase("call")]
         public void Translate_ShouldReturnSay(string input)
         {
-            Assert.That(game.TranslateInput(input), Is.EqualTo("say"));
+            Assert.That(game.Translate(input), Is.EqualTo("say"));
         }
     }
 }
