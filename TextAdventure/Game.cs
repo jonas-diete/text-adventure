@@ -2,10 +2,10 @@ namespace TextAdventure
 {
     public class Game
     {
-        Level currentLevel;
-        List<Level> levels = new List<Level>();
+        public Level currentLevel;
+        public List<Level> levels = new List<Level>();
         string intro;
-        List<string> inventory = new List<string>();
+        public List<string> inventory = new List<string>();
 
         public Game()
         {
