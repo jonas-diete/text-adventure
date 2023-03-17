@@ -19,8 +19,8 @@ namespace TextAdventure.Tests
         [TestCase("get", "rattle")]
         public void GetResult_ShouldReturnEmptyString(string result, string attribute)
         {
-            // Todo: need to test if items have been added to inventory here!
             Assert.That(game.GetResult(result, attribute), Is.EqualTo(""));
+            Assert.That(game.inventory.Contains(attribute));
         }
 
         [TestCase("load", "level2")]
