@@ -26,7 +26,7 @@ namespace TextAdventure
             Console.ReadLine();
         }
 
-        private string EvaluateInput(string playerInput, List<UserAction> possibleActions)
+        public string EvaluateInput(string playerInput, List<UserAction> possibleActions)
         {
             foreach (var possibleAction in possibleActions)
             {

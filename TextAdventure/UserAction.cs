@@ -9,7 +9,7 @@
     public string requirement;
     public string reqNotFulfilled;
 
-        public UserAction(string actionDescriptions, string actionResultDescription, string actionResult, string actionResultAttribute = "none", string actionRequirement = "none", string descriptionWhenReqNotFulfilled = "none")
+        public UserAction(string actionDescriptions, string actionResultDescription, string actionResult = "none", string actionResultAttribute = "none", string actionRequirement = "", string descriptionWhenReqNotFulfilled = "")
         {
             descriptions = actionDescriptions;
             resultDescription = actionResultDescription;
