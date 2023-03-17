@@ -13,11 +13,11 @@ namespace TextAdventure.Tests
         {
             game = new Game();
             List<UserAction> actions = new List<UserAction>();
-            UserAction action1 = new UserAction("talk to troll;chat with troll;communicate with troll", "You say hi to the troll.");
-            UserAction action2 = new UserAction("talk to knight;chat with knight;communicate with knight", "You say hi to the knight.");
+            UserAction action1 = new UserAction("talk to troll;chat with troll;communicate with troll", "You say hi to the troll.", "none", "none", "go to bridge", "There is no troll.");
+            UserAction action2 = new UserAction("talk to knight;chat with knight;communicate with knight", "You say hi to the knight.", "none", "none", "go to bridge", "There is no knight.");
             actions.Add(action1);
             actions.Add(action2);
-            Level level1 = new Level("level1", "Level Description Here", actions);
+            Level level1 = new Level("level1", "You walk to the bridge. There is a troll and a knight.", actions);
             List<Level> levels = new List<Level>();
             levels.Add(level1);
             game.levels = levels;
@@ -27,8 +27,18 @@ namespace TextAdventure.Tests
         [TestCase("talk to troll")]
         [TestCase("chat with troll")]
         [TestCase("communicate with troll")]
+        public void EvaluateInput_ShouldReturnRequirementNotFulfilledDescription(string input)
+        {
+            // Here the requirement 'go to bridge' is not fulfilled:
+            Assert.That(game.EvaluateInput(input, game.currentLevel.actions), Is.EqualTo("There is no troll."));
+        }
+
+        [TestCase("talk to troll")]
+        [TestCase("chat with troll")]
+        [TestCase("communicate with troll")]
         public void EvaluateInput_ShouldReturnResultDescriptionOfFirstAction(string input)
         {
+            game.currentLevel.actionsCompleted.Add("go to bridge");
             Assert.That(game.EvaluateInput(input, game.currentLevel.actions), Is.EqualTo("You say hi to the troll."));
         }
 
@@ -37,6 +47,7 @@ namespace TextAdventure.Tests
         [TestCase("communicate with knight")]
         public void EvaluateInput_ShouldReturnResultDescriptionOfSecondAction(string input)
         {
+            game.currentLevel.actionsCompleted.Add("go to bridge");
             Assert.That(game.EvaluateInput(input, game.currentLevel.actions), Is.EqualTo("You say hi to the knight."));
         }
 
@@ -45,6 +56,7 @@ namespace TextAdventure.Tests
         [TestCase("fight the knight")]
         public void EvaluateInput_ShouldReturnIDontUnderstand(string input)
         {
+            game.currentLevel.actionsCompleted.Add("go to bridge");
             Assert.That(game.EvaluateInput(input, game.currentLevel.actions), Is.EqualTo("I don't understand what to do."));
         }
     }
