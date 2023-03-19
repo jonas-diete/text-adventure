@@ -18,11 +18,17 @@ Traditionally they are commands like `Go to ...`, `Look at ...` or `Open ...`, b
   
 ![game-screenshot](./game-screenshot.jpg)  
 
-### How to build your own text adventure
+## How to build your own text adventure
 I built this adventure so that it is simple to edit. Other levels and text adventures can be built easily by editing the CSV file in the game directory. You can write your own adventure game, by looking at the `levels.csv` file inside the `TextAdventure` folder and editing this. You can write the levels and the actions that the player can perform in each level. My program will make it into a working text adventure.
 Here is an example of the CSV file:  
   
 ![csv-screenshot](./csv-screenshot.jpg)
+
+### How to edit the levels csv file
+Open the file with a spreadsheet software such as excel or with a csv viewer.
+There are different headings in the first row that explain what to write in the following rows:
+- levelName: Each level has to have a unique name. The user will never see the level names, they are just for you and you can name them however you want. The names could just be level1, level2, level3, or they could be names of locations, such as cave, beach, hilltop. The last level needs to be called `end`. 
+- levelDescription: Write a text here that describes the level to the player. The level description of the first level you write will be the title of the game.
 
 When working on this project, I created an overview of my classes with Excalidraw to help me keep an overview of the different variables and methods and how everything links together.
 
