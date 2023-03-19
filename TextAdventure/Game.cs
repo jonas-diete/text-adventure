@@ -33,7 +33,7 @@ namespace TextAdventure
                 string[] actionDescriptions = possibleAction.descriptions.Split(";");
                 if (Array.Exists(actionDescriptions, description => description == TranslateInput(playerInput)))
                 {
-                    if (possibleAction.requirement == "" || currentLevel.actionsCompleted.Exists(action => action == possibleAction.requirement))
+                    if (possibleAction.requirement == "" || currentLevel.actionsCompleted.Exists(action => action == possibleAction.requirement) || CheckInventory(possibleAction.requirement))
                     {
                         currentLevel.actionsCompleted.Add(actionDescriptions[0]);
                         return possibleAction.resultDescription + GetResult(possibleAction.result, possibleAction.resultAttribute); 
@@ -47,6 +47,24 @@ namespace TextAdventure
             return "I don't understand what to do.";
         }
 
+        public bool CheckInventory(string input)
+        {
+            string[] words = input.Split();
+            if (words[0] == "have") 
+            {
+                string requiredItem = "";
+                for (int i = 1; i < words.Length; i++)
+                {
+                    requiredItem += words[i];
+                }
+                if (inventory.Exists(item => item == requiredItem))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
         public string TranslateInput(string input)
         {
             string[] playerInputArray = input.Split(" ");
