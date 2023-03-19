@@ -1,6 +1,6 @@
 # Text Adventure - Into The Light
 
-This is a little project to help me consolidate my C# skills.  
+This is a project that helped me consolidate my C# skills.  
 
 I focused on writing neat high-quality code using OOP, making the game easy to adapt and even enabling users to write their own text adventures easily.
 
