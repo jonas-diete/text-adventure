@@ -49,22 +49,29 @@ namespace TextAdventure
 
         public bool CheckInventory(string input)
         {
-            string[] words = input.Split();
+            string[] words = input.Split(" ");
             if (words[0] == "have") 
             {
-                string requiredItem = "";
-                for (int i = 1; i < words.Length; i++)
-                {
-                    requiredItem += words[i];
-                }
+                string requiredItem = JoinWithoutFirstElement(words);
                 if (inventory.Exists(item => item == requiredItem))
                 {
                     return true;
                 }
             }
-
             return false;
         }
+
+        public string JoinWithoutFirstElement(string[] words)
+        {
+            string result = "";
+            for (int i = 1; i < words.Length; i++)
+            {
+                if (i > 1) { result += " "; }
+                result += words[i];
+            }
+            return result;
+        }
+
         public string TranslateInput(string input)
         {
             string[] playerInputArray = input.Split(" ");
