@@ -27,7 +27,7 @@ Here is an example of the CSV file:
 ### How to edit the levels csv file
 Open the file with a spreadsheet software such as excel or with a csv viewer.
 There are different headings in the first row that explain what to write in the following rows:
-- levelName: Each level has to have a unique name. The user will never see the level names, they are just for you and you can name them however you want. The names could just be level1, level2, level3, or they could be names of locations, such as cave, beach, hilltop. The last level needs to be called `end`. 
+- levelName: Each level has to have a unique name. The user will never see the level names, they are just for you and you can name them however you want. They could simply be level1, level2, level3, or they could be names of locations, such as cave, beach, hilltop. The last level needs to be called `end` and will just describe the ending of the game with no options for the player.
 - levelDescription: Write a text here that describes the level to the player. The level description of the first level you write will be the title of the game.
 
 When working on this project, I created an overview of my classes with Excalidraw to help me keep an overview of the different variables and methods and how everything links together.
