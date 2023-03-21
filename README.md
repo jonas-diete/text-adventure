@@ -43,9 +43,11 @@ Have fun building your own adventure game!
 
 ## My Planning
 
-When working on this project, I created an overview of my classes with Excalidraw to help me keep an overview of the different variables and methods and how everything links together.  
+When working on this project, I created an overview of my classes with Excalidraw to help me keep an overview of the different variables and methods and how everything links together. I updated this at various times during the project to reflect the implementation.
 
 ![classes-overview](./classes-overview.png)
+
+## Testing
 
 I used NUnit to test the functions of the program. To understand what each of the functions do and how they work, you can read the tests. The test files are all in the /TextAdventure.Tests folder. I have written 42 tests.  
 
