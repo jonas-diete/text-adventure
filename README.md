@@ -47,7 +47,7 @@ When working on this project, I created an overview of my classes with Excalidra
 
 ![classes-overview](./classes-overview.png)
 
-## Testing
+## Testing with NUnit
 
 I used NUnit to test the functions of the program. To understand what each of the functions do and how they work, you can read the tests. The test files are all in the /TextAdventure.Tests folder. I have written 42 tests.  
 
