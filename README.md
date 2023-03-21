@@ -24,7 +24,7 @@ Here is an example of the CSV file:
   
 ![csv-screenshot](./csv-screenshot.jpg)
 
-### How to edit the levels csv file
+### How to edit the levels.csv file
 Open the file with a spreadsheet software such as excel or with a csv viewer.
 There are different headings in the first row that explain what to write in the following rows:
 - `levelName`: Each level has to have a unique name. The user will never see the level names, they are just for you and you can name them however you want. They could simply be level1, level2, level3, or they could be names of locations, such as cave, beach, hilltop. The last level needs to be called `end` and will just describe the ending of the game with no options for the player.
@@ -40,11 +40,16 @@ Now follow the different actions that the player can perform in each level. At t
 
 Have fun building your own adventure game!
 
-When working on this project, I created an overview of my classes with Excalidraw to help me keep an overview of the different variables and methods and how everything links together.
+
+## My Planning
+
+When working on this project, I created an overview of my classes with Excalidraw to help me keep an overview of the different variables and methods and how everything links together.  
 
 ![classes-overview](./classes-overview.png)
 
-I used NUnit to test the functions of the program. To understand what each of the functions do and how they work, you can read the tests. The test files are all in the /TextAdventure.Tests folder.
+I used NUnit to test the functions of the program. To understand what each of the functions do and how they work, you can read the tests. The test files are all in the /TextAdventure.Tests folder. I have written 42 tests.  
+
+![tests-screenshot](./tests-screenshot.jpg)
 
 ### How to run the tests:
 1. Download this repository.
