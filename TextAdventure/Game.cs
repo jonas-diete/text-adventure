@@ -21,7 +21,7 @@ namespace TextAdventure
             while (currentLevel.name != "end")
             {
                 string playerInput = Console.ReadLine()!.ToLower().Trim();
-                Console.WriteLine(EvaluateInput(playerInput, currentLevel.actions));
+                Console.WriteLine("\n" + EvaluateInput(playerInput, currentLevel.actions));
             }
             Console.ReadLine();
         }
