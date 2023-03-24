@@ -7,8 +7,8 @@ I focused on writing neat high-quality code using OOP, making the game easy to a
 This is a console application. It uses C# (.NET 6.0 framework) and NUnit for testing.
 
 ### How to Play
-1. Download this repository (or alternatively just download the "Into The Light" folder).
-2. Change directory into the downloaded folder and then to the "Into The Light" folder.
+1. Download this repository (or alternatively just download the "IntoTheLight" folder within).
+2. Change directory into the downloaded folder and then to the "IntoTheLight" folder.
 3. Run `TextAdventure.exe`. Alternatively run `dotnet TextAdventure.dll`.
 4. Play!
 
