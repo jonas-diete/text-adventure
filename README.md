@@ -12,7 +12,7 @@ This is a console application. It uses C# (.NET 6.0 framework) and NUnit for tes
 3. Run `TextAdventure.exe`. Alternatively run `dotnet TextAdventure.dll`.
 4. Play!
 
-This is a Text Adventure in the tradition of the great 1970s Adventure games like Zork or The Hitchhiker's Guide to the Galaxy.   
+This is a short Text Adventure in the tradition of the great 1970s Adventure games like Zork or The Hitchhiker's Guide to the Galaxy.   
 You have to navigate the world by typing commands into the console.  
 Traditionally they are commands like `Go to ...`, `Look at ...` or `Open ...`, but part of the fun is to try to work out the correct commands to progress in the game. If you type in an unkown command the game will tell you.  
   
